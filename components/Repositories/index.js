@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import styles from "../../styles/Home.module.css";
 import { useDispatch, useSelector } from "react-redux";
+import SearchRepositoriesBar from "../SearchRepositoriesBar";
 import { getRepositories } from "../../redux/actions/repositoriesActions";
 
 export default function Repositories() {
@@ -15,18 +15,10 @@ export default function Repositories() {
   return (
     <>
       <div class="grow h-screen bg-blue-200 p-4">
-        <div class="grid grid-cols-3 gap-5">
-          {/* <div className="bg-blue-400 w-full h-32 rounded-lg">
-            <p className="text-1xl">{repositories[0].name}</p>
-            <p className="text-1xl">{repositories[0].full_name}</p>
-          </div>
-          <div className="bg-blue-400 w-full h-32">02</div>
-          <div className="bg-blue-400 w-full h-32">03</div>
-          <div className="bg-blue-400 w-full h-32">04</div>
-          <div className="bg-blue-400 w-full h-32">05</div>
-          <div className="bg-blue-400 w-full h-32">06</div>
-          <div className="bg-blue-400 w-full h-32">09</div> */}
-
+        <div>
+          <SearchRepositoriesBar />
+        </div>
+        <div class="grid grid-cols-3 my-4 gap-5">
           <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
             <div class="flex justify-end px-4 pt-4">
               <button
@@ -80,11 +72,6 @@ export default function Repositories() {
               </div>
             </div>
             <div class="flex flex-col items-center pb-10">
-              <img
-                class="w-24 h-24 mb-3 rounded-full shadow-lg"
-                src="/docs/images/people/profile-picture-3.jpg"
-                alt="Bonnie image"
-              />
               <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                 Bonnie Green
               </h5>
