@@ -1,4 +1,4 @@
-import { Navbar } from "flowbite-react";
+import { Navbar, TextInput } from "flowbite-react";
 
 export default function SearchRepositoriesBar() {
   return (
@@ -11,13 +11,7 @@ export default function SearchRepositoriesBar() {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <Navbar.Link href="/navbars" active={true}>
-            Home
-          </Navbar.Link>
-          <Navbar.Link href="/navbars">About</Navbar.Link>
-          <Navbar.Link href="/navbars">Services</Navbar.Link>
-          <Navbar.Link href="/navbars">Pricing</Navbar.Link>
-          <Navbar.Link href="/navbars">Contact</Navbar.Link>
+          <TextInput id="usersearch" placeholder="Search repository . . ." />
         </Navbar.Collapse>
       </Navbar>
     </>

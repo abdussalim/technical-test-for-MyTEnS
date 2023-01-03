@@ -14,8 +14,8 @@ export default function Profile() {
   }, []);
 
   return (
-    <div class=" w-1/4 h-full bg-red-400 ">
-      <div class="w-full h-screen max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div class=" w-1/4 bg-red-400 ">
+      <div class="w-full h-full bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
         <div class="flex justify-end px-4 pt-4">
           <button
             id="dropdownButton"
@@ -73,6 +73,7 @@ export default function Profile() {
             width={200}
             height={200}
             className={`${styles.img} rounded-full mx-auto mt-20`}
+            alt="Profile Avatar"
           />
           <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
             {profile.name}

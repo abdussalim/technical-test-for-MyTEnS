@@ -1,4 +1,6 @@
 import { Navbar, TextInput } from "flowbite-react";
+import Image from "next/image";
+import SearchLup from "../../public/search.svg";
 
 export default function NavigationBar() {
   return (
@@ -11,17 +13,12 @@ export default function NavigationBar() {
             alt="Flowbite Logo"
           />
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Repository
+            GitHub Users API Gallery
           </span>
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <Navbar.Link active={true}>Home</Navbar.Link>
-          <Navbar.Link>About</Navbar.Link>
-          <Navbar.Link>Services</Navbar.Link>
-          <Navbar.Link>Pricing</Navbar.Link>
-          <Navbar.Link>Contact</Navbar.Link>
-          <TextInput></TextInput>
+          <TextInput id="usersearch" placeholder="Search user . . ." />
         </Navbar.Collapse>
       </Navbar>
     </>
