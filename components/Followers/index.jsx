@@ -1,23 +1,16 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import SearchRepositoriesBar from "../SearchRepositoriesBar";
-import { getRepositories } from "../../redux/actions/repositoriesActions";
+import NavigationBar from "../NavigationBar";
 
-export default function Repositories() {
-  const dispatch = useDispatch();
-  const { repositories } = useSelector((state) => state.repositories);
-  console.log(repositories);
-
-  useEffect(() => {
-    const page = 1;
-    dispatch(getRepositories(), page);
-  }, []);
-
+export default function Followers() {
   return (
     <>
       <div class="grow h-full bg-blue-200 p-4">
         <div>
-          <SearchRepositoriesBar />
+          <NavigationBar
+            id="searchfollowers"
+            title="Your Followers"
+            placeholder="Search followers. . ."
+            isImage={false}
+          />
         </div>
         <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-y-3 sm:gap-y-3 md:gap-8 my-5">
           {repositories.map((repository, index) => {
@@ -51,6 +44,17 @@ export default function Repositories() {
               </div>
             );
           })}
+        </div>
+        <div className="flex items-center justify-center text-center">
+          <Pagination
+            currentPage={currentPage}
+            layout="pagination"
+            onPageChange={onPageChange}
+            showIcons={true}
+            totalPages={totalPages}
+            previousLabel=""
+            nextLabel=""
+          />
         </div>
       </div>
     </>

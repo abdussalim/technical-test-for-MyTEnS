@@ -5,7 +5,7 @@ import {
   GET_REPOSITORIES_SUCCESS,
 } from "../types";
 
-export const getRepositories = () => async (dispatch, page) => {
+export const getRepositories = () => async (dispatch, currentPage) => {
   try {
     dispatch({
       type: GET_REPOSITORIES_PENDING,
@@ -13,7 +13,7 @@ export const getRepositories = () => async (dispatch, page) => {
     });
 
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/abdussalim/repos?page=${page}&per_page=12`
+      `${process.env.NEXT_PUBLIC_API_URL}/abdussalim/repos?page=${currentPage}&per_page=12`
     );
 
     dispatch({

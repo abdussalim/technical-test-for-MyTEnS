@@ -6,7 +6,12 @@ import Repositories from "../components/Repositories";
 export default function Home() {
   return (
     <>
-      <NavigationBar />
+      <NavigationBar
+        id="searchrprofile"
+        title=" GitHub Users API Gallery"
+        placeholder="Search profile. . ."
+        isImage={true}
+      />
       <div class="container mx-auto p-6 flex">
         <Profile />
         <Repositories />
