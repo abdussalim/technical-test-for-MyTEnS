@@ -1,6 +1,17 @@
-import { Navbar, TextInput } from "flowbite-react";
+import { useState } from "react";
+import TextInput from "../TextInput";
+import { Navbar } from "flowbite-react";
+import FilteredUserLists from "../FilteredUserLists";
 
-export default function NavigationBar({ id, title, placeholder, isImage }) {
+export default function NavigationBar({
+  title,
+  isImage,
+  isSearch,
+  isProfilePhoto,
+}) {
+  const [username, setUsername] = useState();
+  const [profile, setProfile] = useState();
+
   return (
     <>
       <Navbar fluid={true} rounded={true}>
@@ -17,9 +28,18 @@ export default function NavigationBar({ id, title, placeholder, isImage }) {
           </span>
         </Navbar.Brand>
         <Navbar.Toggle />
-        <Navbar.Collapse>
-          <TextInput id={id} placeholder={placeholder} />
-        </Navbar.Collapse>
+
+        {isSearch && (
+          <Navbar.Collapse>
+            <TextInput
+              username={username}
+              setUsername={setUsername}
+              setProfile={setProfile}
+            />
+            <FilteredUserLists profile={profile} />
+          </Navbar.Collapse>
+        )}
+        <Navbar.Collapse>{isProfilePhoto && <p>""</p>}</Navbar.Collapse>
       </Navbar>
     </>
   );

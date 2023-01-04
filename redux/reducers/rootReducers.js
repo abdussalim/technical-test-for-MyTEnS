@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
-import profileReducers from "./profileReducers";
+import { profileReducers, searchProfileReducers } from "./profileReducers";
 import repositoriesReducers from "./repositoriesReducers";
 
 const rootReducers = combineReducers({
   profile: profileReducers,
+  searchProfile: searchProfileReducers,
   repositories: repositoriesReducers,
 });
 

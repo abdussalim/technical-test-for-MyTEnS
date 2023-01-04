@@ -5,18 +5,18 @@ import LocationIcon from "../../public/location.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../../redux/actions/profileActions";
 
-export default function Profile() {
+export default function Profile({ username }) {
   const dispatch = useDispatch();
   const { profile } = useSelector((state) => state.profile);
   console.log(profile.avatar_url);
 
   useEffect(() => {
-    dispatch(getProfile());
+    dispatch(getProfile(username));
   }, []);
 
   return (
     <div class=" w-1/4 bg-red-400 ">
-      <div class="w-full h-full bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <div class="w-full h-full bg-white border-2 border-gray-700 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
         <div class="flex flex-col items-center pb-10 mt-10">
           <h5 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">
             {profile.name}
