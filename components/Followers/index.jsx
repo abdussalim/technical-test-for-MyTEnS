@@ -6,11 +6,11 @@ export default function Followers() {
       <div class="grow h-full bg-blue-200 p-4">
         <div className="bg-violet-500 p-4">
           <NavigationBar
-            // id=""
             title="Your Followers"
-            // placeholder=""
             isImage={false}
             isSearch={false}
+            isProfilePhoto={false}
+            isNavbarToggle={false}
           />
         </div>
         <div class="bg-green-500 grid md:grid-cols-2 xl:grid-cols-3 gap-y-3 sm:gap-y-3 md:gap-8 my-5">

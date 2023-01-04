@@ -15,7 +15,7 @@ export default function Profile({ username }) {
   }, []);
 
   return (
-    <div class=" w-1/4 bg-red-400 ">
+    <div class=" w-full lg:w-1/4 bg-red-400 ">
       <div class="w-full h-full bg-white border-2 border-gray-700 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
         <div class="flex flex-col items-center pb-10 mt-10">
           <h5 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">
@@ -35,10 +35,10 @@ export default function Profile({ username }) {
               height={12}
               alt="User Location Icon"
             />
-            {profile.location}
+            {profile.location ? profile.location : "Unkown"}
           </span>
           <h5 class="mb-1 text-md font-small italic text-center text-gray-900 dark:text-white px-10">
-            {profile.bio}
+            {profile.bio ? profile.bio : "-"}
           </h5>
           <div class="flex w-5/8 mt-4 space-x-3 md:mt-6">
             <a

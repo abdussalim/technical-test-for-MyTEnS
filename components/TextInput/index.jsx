@@ -1,13 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { searchUser } from "../../redux/actions/profileActions";
 
-export default function TextInput({
-  id,
-  username,
-  placeholder,
-  setUsername,
-  setProfile,
-}) {
+export default function TextInput({ username, setUsername, setProfile }) {
   const dispatch = useDispatch();
   const {
     searchProfile: { items },
@@ -28,7 +22,7 @@ export default function TextInput({
         >
           Search
         </label>
-        <div class="relative w-96">
+        <div class="relative w-full md:w-96">
           <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
               aria-hidden="true"

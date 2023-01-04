@@ -7,9 +7,6 @@ export default function Repositories({
   onPageChange,
   totalPages,
 }) {
-  console.log("INI HALAMAN SEKARANG", currentPage);
-  console.log("INI JUMLAH HALAMAN", totalPages);
-
   return (
     <>
       <div class="grow h-full bg-blue-200 p-4">
@@ -19,6 +16,7 @@ export default function Repositories({
             isImage={false}
             isSearch={false}
             isProfilePhoto={false}
+            isNavbarToggle={false}
           />
         </div>
         <div class="bg-green-500 grid md:grid-cols-2 xl:grid-cols-3 gap-y-3 sm:gap-y-3 md:gap-8 my-5">
@@ -26,7 +24,7 @@ export default function Repositories({
             return (
               <div
                 key={index}
-                class="w-full max-w-sm h-full bg-white border-2 border-gray-700 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
+                class="w-full h-full bg-white border-2 border-gray-700 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
               >
                 <div class="flex flex-col items-center my-10">
                   <h5 class="mb-1 text-md font-medium text-gray-900 dark:text-white">
@@ -50,11 +48,11 @@ export default function Repositories({
         </div>
         <div className="flex items-center justify-center text-center">
           <Pagination
-            currentPage={1}
-            layout="pagination"
+            currentPage={currentPage}
+            layout="table"
             onPageChange={onPageChange}
+            totalPages={totalPages}
             showIcons={true}
-            totalPages={2}
             previousLabel=""
             nextLabel=""
           />

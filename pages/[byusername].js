@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Profile from "../components/Profile";
 import FooterBar from "../components/FooterBar";
@@ -6,20 +6,44 @@ import Repositories from "../components/Repositories";
 import { useDispatch, useSelector } from "react-redux";
 import NavigationBar from "../components/NavigationBar";
 import { getProfile } from "../redux/actions/profileActions";
-import { getRepositories } from "../redux/actions/repositoriesActions";
+import {
+  getRepositories,
+  getRepositoriesLength,
+} from "../redux/actions/repositoriesActions";
 
 export default function UserAccountData() {
   const router = useRouter();
   const dispatch = useDispatch();
   const { byusername } = router.query;
 
+  // useEffect(() => {
+  //   dispatch(getProfile(byusername));
+  //   dispatch(getRepositories(byusername, 1));
+  // }, [byusername, dispatch]);
+
+  // const { profile } = useSelector((state) => state.profile);
+  // const { repositories } = useSelector((state) => state.repositories);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const totalPerPage = 12;
+
   useEffect(() => {
+    setTotalPages(Math.ceil(repositoriesLength.length / totalPerPage));
+    dispatch(getRepositories(byusername, currentPage, totalPerPage));
+    dispatch(getRepositoriesLength(byusername, currentPage));
     dispatch(getProfile(byusername));
-    dispatch(getRepositories(byusername, 1));
-  }, [byusername, dispatch]);
+  }, [byusername, currentPage, totalPages]);
 
   const { profile } = useSelector((state) => state.profile);
   const { repositories } = useSelector((state) => state.repositories);
+  const { repositoriesLength } = useSelector(
+    (state) => state.repositoriesLength
+  );
+
+  const onPageChange = (event) => {
+    setCurrentPage(event);
+  };
 
   return (
     <>
@@ -27,11 +51,18 @@ export default function UserAccountData() {
         title=" GitHub Users API Gallery"
         isImage={true}
         isSearch={true}
-        isProfilePhoto={true}
+        isProfilePhoto={false}
+        isNavbarToggle={true}
       />
-      <div class="container mx-auto p-6 flex">
+      <div class="container mx-auto p-6 flex flex-col lg:flex-row">
         <Profile profile={profile} />
-        <Repositories profile={profile} repositories={repositories} />
+        <Repositories
+          repositories={repositories}
+          repositoriesLength={repositoriesLength}
+          currentPage={currentPage}
+          onPageChange={onPageChange}
+          totalPages={totalPages}
+        />
       </div>
       <FooterBar />
     </>

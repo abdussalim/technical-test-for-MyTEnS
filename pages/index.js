@@ -5,30 +5,33 @@ import Repositories from "../components/Repositories";
 import { useDispatch, useSelector } from "react-redux";
 import NavigationBar from "../components/NavigationBar";
 import { getProfile } from "../redux/actions/profileActions";
-import { getRepositories } from "../redux/actions/repositoriesActions";
+import {
+  getRepositories,
+  getRepositoriesLength,
+} from "../redux/actions/repositoriesActions";
 
 export default function MyProfile() {
   const dispatch = useDispatch();
   const myusername = "abdussalim";
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const totalPerPage = 12;
 
   useEffect(() => {
+    setTotalPages(Math.ceil(repositoriesLength.length / totalPerPage));
+    dispatch(getRepositories(myusername, currentPage, totalPerPage));
+    dispatch(getRepositoriesLength(myusername, currentPage));
     dispatch(getProfile(myusername));
-    dispatch(getRepositories(myusername, currentPage));
-  }, [dispatch, currentPage]);
+  }, [currentPage, totalPages]);
 
   const { profile } = useSelector((state) => state.profile);
   const { repositories } = useSelector((state) => state.repositories);
+  const { repositoriesLength } = useSelector(
+    (state) => state.repositoriesLength
+  );
 
-  const totalPerPage = 12;
-  const totalPages = Math.ceil(profile.public_repos / totalPerPage);
-
-  const onPageChange = () => {
-    if (currentPage < 1) return setCurrentPage(1);
-    if (currentPage >= totalPages) return setCurrentPage(totalPages);
-    currentPage >= 1
-      ? setCurrentPage(currentPage + 1)
-      : setCurrentPage(currentPage - 1);
+  const onPageChange = (event) => {
+    setCurrentPage(event);
   };
 
   return (
@@ -39,12 +42,14 @@ export default function MyProfile() {
         placeholder="Search profile. . ."
         isSearch={true}
         isImage={true}
-        isProfilePhoto={true}
+        isProfilePhoto={false}
+        isNavbarToggle={true}
       />
-      <div class="container mx-auto p-6 flex">
+      <div class="container mx-auto p-6 flex md:flex-column">
         <Profile profile={profile} />
         <Repositories
           repositories={repositories}
+          repositoriesLength={repositoriesLength}
           currentPage={currentPage}
           onPageChange={onPageChange}
           totalPages={totalPages}
