@@ -45,7 +45,7 @@ export default function MyProfile() {
         isProfilePhoto={false}
         isNavbarToggle={true}
       />
-      <div class="container mx-auto p-6 flex md:flex-column">
+      <div class="container mx-auto p-6 flex flex-col lg:flex-row">
         <Profile profile={profile} />
         <Repositories
           repositories={repositories}

@@ -6,7 +6,7 @@ export default function FooterBar() {
   return (
     <>
       <Footer container={true}>
-        <div className="w-full text-center">
+        <div className="w-full h-full text-center mt-5 pb-0">
           <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
             <Footer.Brand
               href="https://github.com"

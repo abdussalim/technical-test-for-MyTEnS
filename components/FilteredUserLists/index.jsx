@@ -9,7 +9,8 @@ export default function FilteredUserLists({ profile, setUsername }) {
           profile?.map((item, i) => (
             <Link
               href={`/${item.login}`}
-              onClick={() => setUsername("")}
+              onCl
+              ick={() => setUsername("")}
               key={i}
             >
               <div className="flex p-4 scroll-ml-2 snap-center bg-white hover:bg-gray-700 hover:text-white  rounded-lg">

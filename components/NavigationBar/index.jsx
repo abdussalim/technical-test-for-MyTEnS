@@ -5,9 +5,10 @@ import FilteredUserLists from "../FilteredUserLists";
 
 export default function NavigationBar({
   title,
+  currentPage,
   isImage,
   isSearch,
-  isProfilePhoto,
+  isPaginate,
   isNavbarToggle,
 }) {
   const [username, setUsername] = useState();
@@ -39,7 +40,7 @@ export default function NavigationBar({
             <FilteredUserLists profile={profile} />
           </Navbar.Collapse>
         )}
-        {isProfilePhoto && <Navbar.Collapse></Navbar.Collapse>}
+        {isPaginate && `Page [${currentPage}]`}
       </Navbar>
     </>
   );

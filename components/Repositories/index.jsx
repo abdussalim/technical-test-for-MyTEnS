@@ -9,17 +9,18 @@ export default function Repositories({
 }) {
   return (
     <>
-      <div class="grow h-full bg-blue-200 p-4">
-        <div className="bg-violet-500 ">
+      <div class="grow h-full p-4">
+        <div className="border-2 border-gray-700 rounded-lg">
           <NavigationBar
             title="Repository"
+            currentPage={currentPage}
             isImage={false}
             isSearch={false}
-            isProfilePhoto={false}
+            isPaginate={true}
             isNavbarToggle={false}
           />
         </div>
-        <div class="bg-green-500 grid md:grid-cols-2 xl:grid-cols-3 gap-y-3 sm:gap-y-3 md:gap-8 my-5">
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-y-3 sm:gap-y-3 md:gap-8 my-5">
           {repositories.map((repository, index) => {
             return (
               <div
@@ -30,8 +31,10 @@ export default function Repositories({
                   <h5 class="mb-1 text-md font-medium text-gray-900 dark:text-white">
                     {repository.name}
                   </h5>
-                  <span class="text-md text-gray-500 dark:text-gray-400">
-                    {repository.language && `[ ${repository.language} ]`}
+                  <span class="text-md font-medium text-gray-500 dark:text-gray-400 mt-5">
+                    {repository.language
+                      ? `[ ${repository.language} ]`
+                      : `[ Unidentified ]`}
                   </span>
                   <div class="flex mt-4 space-x-3 md:mt-6">
                     <a
@@ -49,7 +52,7 @@ export default function Repositories({
         <div className="flex items-center justify-center text-center">
           <Pagination
             currentPage={currentPage}
-            layout="table"
+            layout="navigation"
             onPageChange={onPageChange}
             totalPages={totalPages}
             showIcons={true}
