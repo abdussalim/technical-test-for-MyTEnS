@@ -12,11 +12,11 @@
 
 ## About The Project
 
-GitHub API Gallery is a website-based application that consume the GitHub's API to get our account data. GitHub API Gallery is developed with PENN satck (PostgreSQL, Express.js, Next.js, Node.js).
+GitHub API Gallery is a website-based application that consume the GitHub's API to get our account data. GitHub API Gallery is developed with PENN stack (PostgreSQL, Express.js, Next.js, Node.js).
 
 ### Technology Used
 
-- [ReactJS](https://nextjs.org/)
+- [NextJS](https://nextjs.org/)
 - [Redux](https://redux.js.org/)
 - [Axios](https://github.com/axios/axios)
 - [Tailwind](https://tailwindcss.com/)
@@ -44,7 +44,7 @@ NEXT_APP_PUBLIC_URL=https://api.github.com
 
 ### Executing program
 
-- Run this project with `npm run start`.
+- Run this project with `npm run dev`.
 
 <!-- SCREENSHOT -->
 
